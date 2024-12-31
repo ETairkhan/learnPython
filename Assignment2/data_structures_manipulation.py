@@ -41,7 +41,7 @@ print("Reversed dictionary:", reversed_dict)
 mixed_tuple = ('Python', 42, 3.14, True, 'Data', False, 3.14)
 
 def count_types(t):
-    """Count the number of elements of each data type in a tuple."""
+    # Count the number of elements of each data type in a tuple.
     type_count = {}
     for item in t:
         t_type = type(item)
@@ -54,7 +54,7 @@ print("Data type counts in tuple:", type_counts)
 
 # b) Convert the tuple into a list, modify it, and convert back to tuple
 def modify_tuple(t):
-    """Convert tuple to list, modify it, and convert back to tuple."""
+    # Convert tuple to list, modify it, and convert back to tuple.
     temp_list = list(t)
     temp_list.append("New Element")  # Add a new element
     temp_list.remove(42)  # Remove an existing element
