@@ -3,21 +3,42 @@ def process_text(paragraph):
     def count_vowels_consonants(text):
         vowels = "aeiouAEIOU"
         consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
-        vowels_count = sum(1 for char in text if char in vowels)
-        consonants_count = sum(1 for char in text if char in consonants)
+        vowels_count = 0
+        consonants_count = 0
+        
+        for char in text:
+            if char in vowels:
+                vowels_count += 1
+            elif char in consonants:
+                consonants_count += 1
+        
         return vowels_count, consonants_count
 
-    # Step 2: Replace a specific word with another
+    # Step 2: Replace all occurrences of a specific word with another word
     def replace_word(text, old_word, new_word):
-        return text.replace(old_word, new_word)
+        words = text.split()  # Split text into a list of words
+        replaced_words = []  
+    
+        for word in words:
+            if word == old_word:
+                replaced_words.append(new_word)  # Replace the exact match with the new word
+            else:
+                replaced_words.append(word)  # Keep the word unchanged if it's not a match
+    
+        return ' '.join(replaced_words)  # Join the list back into a single string
 
-    # Step 3: Extract unique words and sort them alphabetically
+    # Step 3: Extract all unique words and sort them alphabetically
     def extract_unique_words(text):
-        # Remove punctuation manually
+        # Manually remove punctuation
         punctuation = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
-        cleaned_text = ''.join(char if char not in punctuation else ' ' for char in text)
+        cleaned_text = ""
+        for char in text:
+            if char not in punctuation:
+                cleaned_text += char  # Add the character if it's not punctuation
+            else:
+                cleaned_text += " "  # Replace punctuation with a space
         words = cleaned_text.lower().split()
-        return sorted(set(words))  # Return sorted unique words
+        return sorted(set(words))
 
     # Input for word replacement
     old_word = input("Enter the word to replace: ")
